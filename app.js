@@ -17,6 +17,12 @@ app.use(errorHandler)
  */
 app.use("/api", apiRouter)
 
+// API Docs (Swagger)
+const swaggerJSON = require('./swagger.json')
+const swaggerUI = require('swagger-ui-express')
+
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerJSON))
+
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`)
 })
